@@ -1,0 +1,40 @@
+<div class="users-container">
+  <h2 class="users-title">Danh Sách Người Dùng</h2>
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Họ và Tên</th>
+        <th>Email</th>
+        <th>Vai trò</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users}}
+        <tr>
+          <td>{{this._id}}</td>
+          <td>{{this.name}}</td>
+          <td>{{this.email}}</td>
+          <td>{{this.role}}</td>
+          <td>
+            <a href="/detailUser/{{this._id}}" class="btn-view">Chi tiết</a>
+            <a href="/editUser/{{this._id}}" class="btn-edit">Sửa</a>
+            <form
+              action="/deleteUser/{{this._id}}?_method=DELETE"
+              method="POST"
+              style="display:inline;"
+            >
+              <button
+                type="submit"
+                class="btn-delete"
+                onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
+              >Xóa</button>
+            </form>
+
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

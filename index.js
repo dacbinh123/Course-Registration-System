@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser")
 const morgan = require("morgan");
 const exphbs = require("express-handlebars");
 const path = require("path");
+const methodOverride = require("method-override");
 
 
 dbConnect();
@@ -16,9 +17,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(morgan("dev"))
+app.use(methodOverride("_method"));
 
-
-
+const hbs = exphbs.create({
+  helpers: {
+      eq: (a, b) => a === b,  // Định nghĩa helper "eq"
+  },
+});
 app.engine(
   "hbs",
   exphbs.engine({
@@ -26,6 +31,9 @@ app.engine(
     defaultLayout: "main",
     layoutsDir: path.join(__dirname, "views/layouts"),
     partialsDir: path.join(__dirname, "views/partials"),
+    helpers: {
+      eq: (a, b) => a === b, // Định nghĩa helper "eq"
+    },
   })
 );
 app.set("view engine", "hbs");

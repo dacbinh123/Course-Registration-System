@@ -1,0 +1,21 @@
+<div class="update-user-container">
+    <h2>Cập nhật Thông tin Người dùng</h2>
+    <form action="/update?_method=PUT" method="POST" class="update-user-form">
+        <label for="name">Họ và Tên:</label>
+        <input type="text" id="name" name="name" value="{{user.name}}" required>
+
+        <label for="phone">Số điện thoại:</label>
+        <input type="text" id="phone" name="phone" value="{{user.phone}}" required>
+
+        <label for="address">Địa chỉ:</label>
+        <input type="text" id="address" name="address" value="{{user.address}}" required>
+
+        <label for="age">Tuổi:</label>
+        <input type="number" id="age" name="age" value="{{user.age}}" required>
+
+        <div class="update-user-buttons">
+            <button type="submit" class="btn save-btn">Lưu thay đổi</button>
+            <a href="/allUsers" class="btn cancel-btn">Hủy</a>
+        </div>
+    </form>
+</div>

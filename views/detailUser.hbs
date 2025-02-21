@@ -1,0 +1,41 @@
+<div class="user-detail-container">
+    <h2>Thông tin Người dùng</h2>
+    <form action="/detailUser/{{user._id}}?_method=PUT" method="POST">
+        <table class="user-detail-table">
+            <tr>
+                <th>ID</th>
+                <td><input type="text" name="_id" value="{{user._id}}" readonly></td>
+            </tr>
+            <tr>
+                <th>Họ và Tên</th>
+                <td><input type="text" name="name" value="{{user.name}}"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email" value="{{user.email}}"></td>
+            </tr>
+            <tr>
+                <th>Tuổi</th>
+                <td><input type="number" name="age" value="{{user.age}}"></td>
+            </tr>
+            {{!-- <tr>
+                <th>Mật Khẩu</th>
+                <td><input type="password" name="password" placeholder="Nhập mật khẩu mới (nếu có)"></td>
+            </tr> --}}
+            <tr>
+                <th>Vai trò</th>
+                <td>
+                    <select name="role">
+                        <option value="admin" {{#if (eq user.role "admin")}}selected{{/if}}>Admin</option>
+                        <option value="student" {{#if (eq user.role "student")}}selected{{/if}}>Student</option>
+                        <option value="teacher" {{#if (eq user.role "teacher")}}selected{{/if}}>Teacher</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class="user-detail-buttons">
+            <button type="submit" class="btn save-btn">Lưu thay đổi</button>
+            <a href="/allUsers" class="btn cancel-btn">Quay lại</a>
+        </div>
+    </form>
+</div>

@@ -1,3 +1,28 @@
-<h1>{{title}}</h1>
-<p>{{welcomeMessage}}</p>
-<a href="/courses">Xem danh sách khóa học</a>
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Chào mừng đến với Hệ thống Đăng ký Khóa học</h1>
+        <p>Học hỏi, phát triển và thành công với các khóa học chất lượng cao.</p>
+        <a href="/courses" class="btn primary">Khám phá khóa học</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Khóa học Nổi bật</h2>
+    <div class="course-grid">
+        {{#each courses}}
+        <div class="course-card">
+            <img src="{{this.image}}" alt="{{this.name}}">
+            <div class="course-info">
+                <h3>{{this.name}}</h3>
+                <p>{{this.description}}</p>
+                <a href="/course/{{this._id}}" class="btn">Xem chi tiết</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<div class="cta-section">
+    <h2>Bắt đầu hành trình học tập của bạn ngay hôm nay!</h2>
+    <a href="/register" class="btn primary">Đăng ký ngay</a>
+</div>
