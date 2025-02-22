@@ -1,3 +1,7 @@
+{{#if message}}
+  <div class="alert">{{message}}</div>
+{{/if}}
+
 <div class="users-container">
   <h2 class="users-title">Danh Sách Người Dùng</h2>
   <table class="users-table">
@@ -19,19 +23,20 @@
           <td>{{this.role}}</td>
           <td>
             <a href="/detailUser/{{this._id}}" class="btn-view">Chi tiết</a>
-            <a href="/editUser/{{this._id}}" class="btn-edit">Sửa</a>
-            <form
-              action="/deleteUser/{{this._id}}?_method=DELETE"
-              method="POST"
-              style="display:inline;"
-            >
-              <button
-                type="submit"
-                class="btn-delete"
-                onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-              >Xóa</button>
-            </form>
 
+            {{#if this.isBlocked}}
+              <form action="/unclock-user/{{this._id}}?_method=PUT" method="POST" style="display:inline;">
+                <button type="submit" class="btn-unblock">Unblock</button>
+              </form>
+            {{else}}
+              <form action="/block-user/{{this._id}}?_method=PUT" method="POST" style="display:inline;">
+                <button type="submit" class="btn-block">Block</button>
+              </form>
+            {{/if}}
+
+            <form action="/deleteUser/{{this._id}}?_method=DELETE" method="POST" style="display:inline;">
+              <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
+            </form>
           </td>
         </tr>
       {{/each}}

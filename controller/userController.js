@@ -147,7 +147,53 @@ const userController = {
             return res.status(500).render("home", { error: "Cập nhật thất bại!" });
         }
     }),
-       
+    blockUser: asyncHandler(async (req, res) => {
+        const { id } = req.params;
+        validateMongoDbId(id);
+    
+        try {
+            const blockedUser = await User.findByIdAndUpdate(
+                id,
+                { isBlocked: true },
+                { new: true }
+            );
+    
+            if (!blockedUser) {
+                return res.status(404).json({ message: "User not found" });
+            }
+    
+            req.session.message = "Người dùng đã bị chặn.";
+            res.redirect("/allUsers");
+        } catch (error) {
+            console.error("Error blocking user:", error);
+            res.status(500).send("Internal Server Error");
+        }
+    }),
+    
+    unblockUser: asyncHandler(async (req, res) => {
+        const { id } = req.params;
+        validateMongoDbId(id);
+    
+        try {
+            const unblockedUser = await User.findByIdAndUpdate(
+                id,
+                { isBlocked: false },
+                { new: true }
+            );
+    
+            if (!unblockedUser) {
+                return res.status(404).json({ message: "User not found" });
+            }
+    
+            req.session.message = "Người dùng đã được bỏ chặn.";
+            res.redirect("/allUsers");
+        } catch (error) {
+            console.error("Error unblocking user:", error);
+            res.status(500).send("Internal Server Error");
+        }
+    }),
+    
+    
     //logout
     logout : asyncHandler(async (req, res) => {
         const cookie = req.cookies;

@@ -460,3 +460,135 @@
 .cancel-btn:hover {
   background-color: #c82333;
 }
+.btn-view, .btn-block, .btn-unblock, .btn-delete {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 5px;
+  display: inline-block;
+  text-align: center;
+  width: 80px; /* Đảm bảo kích thước nút đồng nhất */
+}
+
+.btn-view { background-color: #3498db; color: white; }
+.btn-block { background-color: #2c3e50; color: white; }
+.btn-unblock { background-color: #27ae60; color: white; }
+.btn-delete { background-color: #e74c3c; color: white; }
+
+.courses-container {
+  text-align: center;
+  padding: 20px;
+}
+.courses-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+.course-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.course-image {
+  max-width: 100%;
+  border-radius: 8px;
+  height: auto;
+}
+.course-title {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+.course-description {
+  font-size: 1rem;
+  color: #555;
+}
+.btn-detail {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.btn-detail:hover {
+  background-color: #0056b3;
+}
+
+
+/* đăng kí khóa học*/
+.course-form-container-create {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.course-form-title-create {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: #333;
+}
+
+/* Input và label */
+.course-form-group-create {
+  margin-bottom: 1.5rem;
+}
+
+.course-form-label-create {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+  color: #444;
+}
+
+.course-form-input-create,
+.course-form-textarea-create,
+.course-form-file-input-create {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.course-form-textarea-create {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Nút đăng ký */
+.course-form-submit-create {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.3rem;
+  color: #fff;
+  background-color: #0066cc;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.course-form-submit-create:hover {
+  background-color: #004d99;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .course-form-container-create {
+    padding: 1.5rem;
+  }
+}

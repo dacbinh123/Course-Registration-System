@@ -16,4 +16,7 @@ router.get("/detailUser/:id", authMiddleware, isAdmin, authController.getaUser);
 router.put("/detailUser/:id", authMiddleware,isAdmin,authController.UpdateUserByAdmin);
 router.delete('/deleteUser/:id', authMiddleware,isAdmin, authController.deleteaUser);
 
+router.put('/block-user/:id', authMiddleware,isAdmin,authController.blockUser);
+router.put('/unclock-user/:id', authMiddleware,isAdmin,authController.unblockUser);
+
 module.exports = router;

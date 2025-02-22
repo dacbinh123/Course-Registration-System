@@ -1,0 +1,90 @@
+<div class="course-form-container-create">
+  <h2 class="course-form-title-create">Đăng Ký Khóa Học</h2>
+  {{!-- <form action="/course/register" method="POST" > --}}
+  <form action="/course/register" method="POST" enctype="multipart/form-data">
+  
+    <!-- Tên Khóa Học -->
+    <div class="course-form-group-create">
+      <label for="title" class="course-form-label-create">Tên Khóa Học</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="course-form-input-create"
+        placeholder="Nhập tên khóa học"
+        required
+      />
+    </div>
+
+    <!-- Mô Tả Khóa Học -->
+    <div class="course-form-group-create">
+      <label for="description" class="course-form-label-create">Mô Tả Khóa Học</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="4"
+        class="course-form-textarea-create"
+        placeholder="Nhập mô tả ngắn gọn về khóa học"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Danh Mục -->
+    <div class="course-form-group-create">
+      <label for="category" class="course-form-label-create">Danh Mục</label>
+      <input
+        type="text"
+        id="category"
+        name="category"
+        class="course-form-input-create"
+        placeholder="Nhập danh mục khóa học"
+        required
+      />
+    </div>
+
+    <!-- Giá Khóa Học -->
+    <div class="course-form-group-create">
+      <label for="price" class="course-form-label-create">Giá Khóa Học (VNĐ)</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        min="0"
+        class="course-form-input-create"
+        placeholder="Nhập giá khóa học"
+        required
+      />
+    </div>
+
+    <!-- Chọn Giáo Viên -->
+    <div class="course-form-group-create">
+      <label for="teacher" class="course-form-label-create">Chọn Giáo Viên</label>
+      <select
+        id="teacher"
+        name="teacher"
+        class="course-form-select-create"
+        required
+      >
+        <option value="" disabled selected>Chọn giáo viên...</option>
+        {{#each teachers}}
+          <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    {{!-- Upload Hình Ảnh --}}
+    <div class="course-form-group-create">
+      <label for="image" class="course-form-label-create">Hình Ảnh Khóa Học</label>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        accept="image/*"
+        class="course-form-file-input-create"
+      />
+    </div>
+
+    <!-- Nút Đăng Ký -->
+    <button type="submit" class="course-form-submit-create">Đăng Ký</button>
+  </form>
+</div>

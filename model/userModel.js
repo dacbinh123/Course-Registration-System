@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema(
     age: { type: Number, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ["admin", "teacher", "student"], default: "student" }
+    role: { type: String, enum: ["admin", "teacher", "student"], default: "student" },
+    isBlocked:{
+      type: Boolean,
+      default: false},
   },
   { timestamps: true }
 );
