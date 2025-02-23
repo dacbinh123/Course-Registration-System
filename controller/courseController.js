@@ -14,8 +14,6 @@ const courseController = {
     getCoursePage: asyncHandler(async (req, res) => {
         try {
             const courses = await Course.find().lean();
-            console.log(courses)
-
             const isAdmin = req.user && req.user.role === "admin"; // Kiểm tra quyền admin
             res.render("course", {
                 title: "Trang khóa học",
@@ -38,9 +36,6 @@ const courseController = {
 
     createCourse: asyncHandler(async (req, res) => {
         try {
-          console.log('Request body:', req.body);
-          console.log('Uploaded file:', req.file);
-      
           if (!req.file) {
             return res.status(400).send('No file uploaded.');
           }
@@ -74,9 +69,8 @@ const courseController = {
             }
     
             const isAdmin = req.user && req.user.role === 'admin';
-            const user = req.user ? req.user.toObject() : null; // Chuyển user sang plain object
-            console.log("User: ",user)
-            res.render("course-detail", { course, isAdmin, user }); // Thêm user vào render
+            const user = req.user ? req.user.toObject() : null; 
+            res.render("course-detail", { course, isAdmin, user }); 
         } catch (error) {
             res.status(500).send("Lỗi server: " + error.message);
         }

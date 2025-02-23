@@ -1,28 +1,46 @@
-<div class="hero-section">
-    <div class="hero-content">
-        <h1>Chào mừng đến với Hệ thống Đăng ký Khóa học</h1>
-        <p>Học hỏi, phát triển và thành công với các khóa học chất lượng cao.</p>
-        <a href="/courses" class="btn primary">Khám phá khóa học</a>
+<main class="main-home">
+  <!-- Hero Section (Giới thiệu) -->
+  <section class="hero-section-home">
+    <div class="hero-content-home">
+      <h1>Chào mừng đến với EduLearn</h1>
+      <p>Nơi giúp bạn học hỏi, phát triển và đạt được thành công qua các khóa học chất lượng cao.</p>
+      <a href="/course" class="btn-home primary-home">Khám phá khóa học</a>
     </div>
-</div>
+  </section>
 
-<div class="container">
-    <h2>Khóa học Nổi bật</h2>
-    <div class="course-grid">
-        {{#each courses}}
-        <div class="course-card">
-            <img src="{{this.image}}" alt="{{this.name}}">
-            <div class="course-info">
-                <h3>{{this.name}}</h3>
-                <p>{{this.description}}</p>
-                <a href="/course/{{this._id}}" class="btn">Xem chi tiết</a>
-            </div>
+  <!-- Featured Courses (Khóa học) -->
+  <section class="courses-section-home">
+    <h2 class="section-title-home">Khóa học Nổi bật</h2>
+    <div class="course-grid-home">
+      {{#each courses}}
+        <div class="course-card-home">
+          <img src="{{this.image}}" alt="{{this.name}}" class="course-image-home" />
+          <div class="course-info-home">
+            <h3 class="course-title-home">{{this.name}}</h3>
+            <p class="course-description-home">{{this.description}}</p>
+            <a href="/course/detail-course/{{this._id}}" class="btn-detail-home">Xem Chi Tiết</a>
+          </div>
         </div>
-        {{/each}}
+      {{/each}}
     </div>
-</div>
+  </section>
 
-<div class="cta-section">
-    <h2>Bắt đầu hành trình học tập của bạn ngay hôm nay!</h2>
-    <a href="/register" class="btn primary">Đăng ký ngay</a>
-</div>
+  <!-- Reviews Section (Đánh giá) -->
+  <section class="reviews-section-home">
+    <h2 class="section-title-home">Phản hồi từ học viên</h2>
+    <div class="review-grid-home">
+      <div class="review-card-home">
+        <p class="review-text-home">"Khóa học rất hữu ích và giảng viên rất tận tâm. Tôi đã học được rất nhiều kỹ năng mới!"</p>
+        <span class="review-author-home">- Nguyễn Văn A</span>
+      </div>
+      <div class="review-card-home">
+        <p class="review-text-home">"Nội dung bài giảng rõ ràng, dễ hiểu. Hệ thống hỗ trợ học viên rất nhanh chóng."</p>
+        <span class="review-author-home">- Trần Thị B</span>
+      </div>
+      <div class="review-card-home">
+        <p class="review-text-home">"Đây là nền tảng học trực tuyến tốt nhất mà tôi từng sử dụng. Rất đáng để trải nghiệm!"</p>
+        <span class="review-author-home">- Lê Văn C</span>
+      </div>
+    </div>
+  </section>
+</main>

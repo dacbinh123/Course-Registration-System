@@ -5,14 +5,10 @@
       <ul class="nav-list">
         <li><a href="/">Trang chủ</a></li>
         <li><a href="/course">Khóa học</a></li>
-        <li><a href="/contact">Liên hệ</a></li>
+        <li><a href="/chat">Trò chuyện</a></li>
 
         {{#if user}}
-          {{#if (eq user.role "admin")}}
-            {{!-- <li><a href="/course">Đăng khóa học</a></li> --}}
-            <li><a href="/allUsers">Quản lý tài khoản</a></li>
-          {{/if}}
-          
+          <li><a href="/dashboard">Dashboard</a></li>
           <li><a href="/update">Tài khoản</a></li>
           <li><a href="/logout" class="btn-logout">Đăng xuất</a></li>
         {{else}}

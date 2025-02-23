@@ -12,6 +12,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const multer = require('multer');
 
+
 // Kết nối DB
 dbConnect();
 
@@ -57,12 +58,20 @@ const homeRoutes = require('./route/homeRoute');
 const authRoutes = require('./route/authRoute');
 const courseRoutes = require('./route/courseRoute');
 const enrollmentRoutes = require('./route/enrollmentRoute');
+const dashboardRoutes = require('./route/dashboardRoute');
 
 
 app.use('/', homeRoutes);
 app.use('/', authRoutes);
 app.use('/course', courseRoutes);
 app.use("/enrollment", enrollmentRoutes);
+app.use("/dashboard", dashboardRoutes);
+
+
+
+
+
+
 
 // Khởi động server
 app.listen(PORT, () => {

@@ -3,29 +3,148 @@
    ===================== */
 
 /* Hero section */
-.hero-section {
-  background: url('/images/banner.jpg') center/cover no-repeat;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-}
+  /* Tổng thể */
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f8ff;
+    color: #333;
+  }
 
-.hero-content {
-  max-width: 600px;
-}
+  main.main-home {
+    padding: 2rem 10%;
+  }
 
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
+  h1, h2, h3 {
+    margin-bottom: 1rem;
+  }
 
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
+  .section-title-home {
+    font-size: 2rem;
+    color: #0077cc;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  /* Hero Section */
+  .hero-section-home {
+    background: #0077cc;
+    color: #fff;
+    padding: 5rem 2rem;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-content-home h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content-home p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-home {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: #005fa3;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .btn-home:hover {
+    background-color: #004c82;
+  }
+
+  /* Courses Section */
+  .courses-section-home {
+    padding: 3rem 0;
+  }
+
+  .course-grid-home {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .course-card-home {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .course-image-home {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .course-info-home {
+    padding: 1.5rem;
+  }
+
+  .course-title-home {
+    font-size: 1.5rem;
+    color: #0077cc;
+  }
+
+  .course-description-home {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-detail-home {
+    display: inline-block;
+    background-color: #0077cc;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .btn-detail-home:hover {
+    background-color: #005fa3;
+  }
+
+  /* Reviews Section */
+  .reviews-section-home {
+    background: #eaf4ff;
+    padding: 3rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+  }
+
+  .review-grid-home {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .review-card-home {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .review-text-home {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .review-author-home {
+    font-weight: bold;
+    color: #0077cc;
+  }
 
 /* Course grid */
 .course-grid {
@@ -811,3 +930,89 @@ img.payment-qr {
   display: none;
   margin-top: 20px;
 }
+
+/*dashboard*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container-dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar-dashboard {
+  width: 250px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar-dashboard h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.sidebar-dashboard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-dashboard li {
+  margin-bottom: 10px;
+}
+
+.sidebar-dashboard a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.sidebar-dashboard a:hover {
+  background-color: #1abc9c;
+}
+
+/* Main content */
+.main-dashboard {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.section-dashboard {
+  display: none;
+}
+
+.section-dashboard.active {
+  display: block;
+}
+
+h2 {
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #3498db;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+/*chat*/

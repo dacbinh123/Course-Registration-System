@@ -1,0 +1,141 @@
+<div class="container-dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar-dashboard">
+        <h2>Quản lý</h2>
+        <ul>
+            <li><a href="#" data-section="students-section">Quản lý học viên</a></li>
+            <li><a href="#" data-section="teachers-section">Quản lý giáo viên</a></li>
+            <li><a href="#" data-section="courses-section">Quản lý khóa học</a></li>
+            <li><a href="#" data-section="users-section">Quản lý tài khoản</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-dashboard">
+        <!-- Quản lý học viên -->
+        <section id="students-section" class="section-dashboard active">
+            <h2>Quản lý học viên</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each students}}
+                    <tr>
+                        <td>{{this.name}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.phone}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Quản lý giáo viên -->
+        <section id="teachers-section" class="section-dashboard">
+            <h2>Quản lý giáo viên</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each teachers}}
+                    <tr>
+                        <td>{{this.name}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.phone}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Quản lý khóa học -->
+        <section id="courses-section" class="section-dashboard">
+            <h2>Quản lý khóa học</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tiêu đề</th>
+                        <th>Giá</th>
+                        <th>Giảng viên</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each courses}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.price}}</td>
+                        <td>{{this.teacher.name}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Quản lý tài khoản -->
+        <section id="users-section" class="section-dashboard">
+            <h2>Quản lý tài khoản</h2>
+            {{#if message}}
+                <div class="alert">{{message}}</div>
+            {{/if}}
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ và Tên</th>
+                        <th>Email</th>
+                        <th>Vai trò</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                    <tr>
+                        <td>{{this._id}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.role}}</td>
+                        <td>
+                            <a href="/detailUser/{{this._id}}" class="btn-view">Chi tiết</a>
+                            {{#if this.isBlocked}}
+                            <form action="/unclock-user/{{this._id}}?_method=PUT" method="POST" style="display:inline;">
+                                <button type="submit" class="btn-unblock">Unblock</button>
+                            </form>
+                            {{else}}
+                            <form action="/block-user/{{this._id}}?_method=PUT" method="POST" style="display:inline;">
+                                <button type="submit" class="btn-block">Block</button>
+                            </form>
+                            {{/if}}
+                            <form action="/deleteUser/{{this._id}}?_method=DELETE" method="POST" style="display:inline;">
+                                <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<script>
+    document.querySelectorAll('.sidebar-dashboard a').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelectorAll('.section-dashboard').forEach(section => {
+                section.classList.remove('active');
+            });
+            const targetSection = document.getElementById(this.dataset.section);
+            targetSection.classList.add('active');
+        });
+    });
+</script>
