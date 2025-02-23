@@ -1,12 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const enrollmentSchema = new mongoose.Schema(
-  {
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // Học viên
-    courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course", required: true }, // Khóa học
-    status: { type: String, enum: ["in-progress", "completed"], default: "in-progress" } // Trạng thái khóa học
+const enrollmentSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  courseId: { type: mongoose.Schema.Types.ObjectId, ref: 'Course', required: true },
+  paymentStatus: {
+    type: String,
+    enum: ['pending', 'completed', 'failed'],
+    default: 'pending',
   },
-  { timestamps: true }
-);
+  createdAt: { type: Date, default: Date.now }
+});
 
-module.exports = mongoose.model("Enrollment", enrollmentSchema);
+module.exports = mongoose.model('Enrollment', enrollmentSchema);

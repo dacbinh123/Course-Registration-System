@@ -1,9 +1,7 @@
 <div class="courses-container">
   <h2 class="courses-title">Danh Sách Khóa Học</h2>
 
-  {{#if isAdmin}}
-    <a href="/course/create" class="btn-create">Đăng Khóa Học</a>
-  {{/if}}
+
 
   <div class="courses-grid">
     {{#each courses}}
@@ -11,15 +9,12 @@
         <img src="/uploads/courses/{{this.image}}" alt="{{this.title}}" class="course-image" />
         <h3 class="course-title">{{this.title}}</h3>
         <p class="course-description">{{this.description}}</p>
-        <a href="/courses/{{this._id}}" class="btn-detail">Xem Chi Tiết</a>
-
-        {{#if ../isAdmin}}
-          <a href="/courses/edit/{{this._id}}" class="btn-edit">Sửa</a>
-          <form action="/courses/delete/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
-            <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa khóa học này?')">Xóa</button>
-          </form>
-        {{/if}}
+        <a href="/course/detail-course/{{this._id}}" class="btn-detail">Xem Chi Tiết</a>
       </div>
     {{/each}}
   </div>
+
+    {{#if isAdmin}}
+    <a href="/course/create" class="btn-create"><h2>Đăng Khóa Học</h2></a>
+    {{/if}}
 </div>

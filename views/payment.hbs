@@ -1,0 +1,24 @@
+<div class="container-payment">
+  <h2 class="payment-title">Quét mã QR để thanh toán</h2>
+  <img src="{{qrCode}}" alt="QR Code Thanh Toán" class="payment-qr" />
+
+  <p>Vui lòng quét mã QR để thanh toán khóa học:
+    <strong>{{course.title}}</strong></p>
+  <p>Số tiền: <strong>{{course.price}} VNĐ</strong></p>
+
+  <form id="paymentForm" action="/enrollment/confirm-payment" method="POST">
+    <input type="hidden" name="userId" value="{{user._id}}" />
+    <input type="hidden" name="courseId" value="{{course._id}}" />
+    <button type="submit" class="btn-confirm-payment">Xác nhận đã thanh toán</button>
+  </form>
+
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', async (e)
+    => { e.preventDefault(); const formData = new FormData(e.target); try {
+    const response = await fetch('/enrollment/confirm-payment', { method:
+    'POST', body: formData }); if (response.ok) { alert('Thanh toán thành
+    công!'); window.location.href = '/'; } else { const result = await
+    response.json(); alert('Lỗi: ' + result.message); } } catch (error) {
+    console.error('Lỗi:', error); } });
+  </script>
+</div>

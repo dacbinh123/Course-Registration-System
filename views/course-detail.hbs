@@ -1,0 +1,86 @@
+<div class="course-detail">
+  <!-- Hình ảnh khóa học -->
+  <div class="course-detail__image">
+    <img src="/uploads/courses/{{course.image}}" alt="{{course.title}}" />
+  </div>
+
+  <!-- Thông tin khóa học -->
+  <div class="course-detail__info">
+    <h1>{{course.title}}</h1>
+    <p><strong>Danh mục:</strong> {{course.category}}</p>
+    <p><strong>Mô tả:</strong> {{course.description}}</p>
+    <p><strong>Giá:</strong> {{course.price}} VNĐ</p>
+    <p><strong>Giảng viên:</strong> {{course.teacher.name}}</p>
+
+    <!-- Trạng thái đăng ký và thanh toán -->
+    {{#if isEnrolled}}
+      <p><strong>Trạng thái đăng ký:</strong> ✅ Đã đăng ký</p>
+      <p><strong>Trạng thái thanh toán:</strong>
+        {{#ifEquals paymentStatus "paid"}}✅ Đã thanh toán{{/ifEquals}}
+        {{#ifEquals paymentStatus "pending"}}⏳ Chưa thanh toán{{/ifEquals}}
+      </p>
+    {{else}}
+      <p><strong>Trạng thái đăng ký:</strong> ❌ Chưa đăng ký</p>
+    {{/if}}
+
+    <!-- Chức năng cho Admin -->
+    {{#if isAdmin}}
+      <h2>Cập nhật khóa học</h2>
+      <form
+        class="course-detail__form"
+        id="updateForm"
+        action="/course/update/{{course._id}}?_method=PUT"
+        method="POST"
+      >
+        <label for="title">Tiêu đề</label>
+        <input type="text" name="title" value="{{course.title}}" required />
+
+        <label for="description">Mô tả</label>
+        <textarea
+          name="description"
+          rows="4"
+          required
+        >{{course.description}}</textarea>
+
+        <label for="category">Danh mục</label>
+        <input
+          type="text"
+          name="category"
+          value="{{course.category}}"
+          required
+        />
+
+        <label for="price">Giá (VNĐ)</label>
+        <input type="number" name="price" value="{{course.price}}" required />
+
+        <button
+          type="submit"
+          class="course-detail__button course-detail__button--update"
+        >Cập nhật</button>
+      </form>
+
+      <form
+        class="course-detail__form"
+        action="/course/delete/{{course._id}}?_method=DELETE"
+        method="POST"
+      >
+        <button
+          type="submit"
+          class="course-detail__button course-detail__button--delete"
+          onclick="return confirm('Bạn có chắc chắn muốn xóa khóa học này?')"
+        >Xóa khóa học</button>
+      </form>
+    {{/if}}
+
+    <!-- Đăng ký khóa học & Chuyển đến trang thanh toán -->
+    <h2>Đăng ký khóa học</h2>
+    <form class="course-detail__form" action="/enrollment/payment" method="GET">
+      <input type="hidden" name="courseId" value="{{course._id}}" />
+      <input type="hidden" name="userId" value="{{user._id}}" />
+      <button
+        type="submit"
+        class="course-detail__button course-detail__button--enroll"
+      >Đăng ký & Thanh toán</button>
+    </form>
+  </div>
+</div>

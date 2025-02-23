@@ -522,6 +522,57 @@
 .btn-detail:hover {
   background-color: #0056b3;
 }
+/*footer*/
+/* Đặt body và html để đảm bảo footer luôn nằm dưới cùng */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nội dung chính (để đẩy footer xuống dưới nếu trang ngắn) */
+.main-content {
+  flex: 1;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.footer-links li {
+  display: inline;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
 
 
 /* đăng kí khóa học*/
@@ -591,4 +642,172 @@
   .course-form-container-create {
     padding: 1.5rem;
   }
+}
+
+
+/* detail course*/
+
+/* Container chính */
+.course-detail {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Hình ảnh khóa học */
+.course-detail__image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.course-detail__image img {
+  width: 300px; /* Giới hạn chiều rộng */
+  height: auto; /* Giữ nguyên tỷ lệ */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  object-fit: cover; /* Cắt hình cho vừa khung */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ */
+}
+
+/* Thông tin khóa học */
+.course-detail__info h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.course-detail__info p {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  color: #555;
+}
+
+.course-detail__info strong {
+  color: #000;
+}
+
+/* Nút hành động */
+.course-detail__button {
+  padding: 12px 20px;
+  margin: 10px 5px 0 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.course-detail__button--edit {
+  background-color: #4caf50;
+  color: white;
+}
+
+.course-detail__button--delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.course-detail__button--update {
+  background-color: #008cba;
+  color: white;
+}
+
+.course-detail__button--enroll {
+  background-color: #ff9800;
+  color: white;
+}
+
+.course-detail__button--edit:hover {
+  background-color: #45a049;
+}
+
+.course-detail__button--delete:hover {
+  background-color: #d32f2f;
+}
+
+.course-detail__button--update:hover {
+  background-color: #007bb5;
+}
+
+.course-detail__button--enroll:hover {
+  background-color: #fb8c00;
+}
+
+/* Form */
+.course-detail__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.course-detail__form input,
+.course-detail__form textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.course-detail__form label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+/*payment*/
+
+body.payment-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container-payment {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+h2.payment-title {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+img.payment-qr {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.btn-confirm-payment {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-confirm-payment:hover {
+  background-color: #0056b3;
+}
+
+.success-message-payment {
+  color: #28a745;
+  font-weight: bold;
+  display: none;
+  margin-top: 20px;
 }

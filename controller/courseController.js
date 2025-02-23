@@ -36,28 +36,71 @@ const courseController = {
         }
     }),
 
-     createCourse : asyncHandler(async (req, res) => {
+    createCourse: asyncHandler(async (req, res) => {
         try {
-            console.log("Request body:", req.body);
-            console.log("Uploaded file:", req.file);
-    
-            const { title, description, category, price, teacher } = req.body;
-            const image = req.file ? req.file.filename : null;
-    
-            const newCourse = await Course.create({
-                title,
-                description,
-                category,
-                price,
-                teacher,
-                image,
-            });
-    
-            console.log("New course:", newCourse);
-            res.redirect('/course');
+          console.log('Request body:', req.body);
+          console.log('Uploaded file:', req.file);
+      
+          if (!req.file) {
+            return res.status(400).send('No file uploaded.');
+          }
+      
+          const { title, description, category, price, teacher } = req.body;
+          const image = req.file.filename;
+      
+          const newCourse = await Course.create({
+            title,
+            description,
+            category,
+            price,
+            teacher,
+            image,
+          });
+      
+          res.redirect('/course');
         } catch (error) {
-            res.status(500).send('Lỗi server: ' + error.message);
+          console.error('Error:', error);
+          res.status(500).send('Lỗi server: ' + error.message);
         }
-    }),
+      }),
+    getCourseDetailPage: async (req, res) => {
+        try {
+            const course = await Course.findById(req.params.id)
+                .populate('teacher', 'name')
+                .lean();
+    
+            if (!course) {
+                return res.status(404).send("Không tìm thấy khóa học");
+            }
+    
+            const isAdmin = req.user && req.user.role === 'admin';
+            const user = req.user ? req.user.toObject() : null; // Chuyển user sang plain object
+            console.log("User: ",user)
+            res.render("course-detail", { course, isAdmin, user }); // Thêm user vào render
+        } catch (error) {
+            res.status(500).send("Lỗi server: " + error.message);
+        }
+    },
+    
+    
+    
+    updateCourse: async (req, res) => {
+        try {
+            const { title, description, category, price } = req.body;
+            await Course.findByIdAndUpdate(req.params.id, { title, description, category, price });
+            res.redirect(`/course/detail-course/${req.params.id}`);
+        } catch (error) {
+            res.status(500).send("Lỗi server: " + error.message);
+        }
+    },
+
+    deleteCourse: async (req, res) => {
+        try {
+            await Course.findByIdAndDelete(req.params.id);
+            res.redirect("/course");
+        } catch (error) {
+            res.status(500).send("Lỗi server: " + error.message);
+        }
+    },
 }
 module.exports = courseController;

@@ -10,6 +10,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const multer = require('multer');
 
 // Kết nối DB
 dbConnect();
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(methodOverride('_method'));
 app.use(express.json());
+app.use(multer().none()); // xử lý formData từ fetch
 
 // Cấu hình express-session
 app.use(session({
@@ -54,10 +56,13 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 const homeRoutes = require('./route/homeRoute');
 const authRoutes = require('./route/authRoute');
 const courseRoutes = require('./route/courseRoute');
+const enrollmentRoutes = require('./route/enrollmentRoute');
+
 
 app.use('/', homeRoutes);
 app.use('/', authRoutes);
 app.use('/course', courseRoutes);
+app.use("/enrollment", enrollmentRoutes);
 
 // Khởi động server
 app.listen(PORT, () => {
