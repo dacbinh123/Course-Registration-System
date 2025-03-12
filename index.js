@@ -23,25 +23,25 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(methodOverride('_method'));
 app.use(express.json());
-app.use(multer().none()); // xử lý formData từ fetch
+// app.use(multer().none()); // xử lý formData từ fetch
 
 // Cấu hình express-session
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'yourSecretKey',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } // false nếu không dùng HTTPS
+    secret: process.env.SESSION_SECRET || 'yourSecretKey',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // false nếu không dùng HTTPS
 }));
 
 // Cấu hình Handlebars
 const hbs = exphbs.create({
-  extname: 'hbs',
-  defaultLayout: 'main',
-  layoutsDir: path.join(__dirname, 'views/layouts'),
-  partialsDir: path.join(__dirname, 'views/partials'),
-  helpers: {
-    eq: (a, b) => a === b,
-  },
+    extname: 'hbs',
+    defaultLayout: 'main',
+    layoutsDir: path.join(__dirname, 'views/layouts'),
+    partialsDir: path.join(__dirname, 'views/partials'),
+    helpers: {
+        eq: (a, b) => a === b,
+    },
 });
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
@@ -75,5 +75,5 @@ app.use("/dashboard", dashboardRoutes);
 
 // Khởi động server
 app.listen(PORT, () => {
-  console.log(`✅ Server is running at http://localhost:${PORT}`);
+    console.log(`✅ Server is running at http://localhost:${PORT}`);
 });
